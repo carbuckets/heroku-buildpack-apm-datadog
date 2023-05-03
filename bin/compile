@@ -7,7 +7,7 @@ set -o pipefail
 
 # Debug
 # set -x
-
+BUILD_DIR=$1
 CACHE_DIR=$2
 
 echo "-----> Downloading dd-trace-php datadog-setup.php file"
@@ -16,7 +16,7 @@ curl -LO https://github.com/DataDog/dd-trace-php/releases/latest/download/datado
 
 if [ -s "$CACHE_DIR/datadog-setup.php" ]; then
   echo "-----> Installing APM only"
-  php "$CACHE_DIR/datadog-setup.php" --php-bin=all
+  php "$CACHE_DIR/datadog-setup.php" --install-dir="$BUILD_DIR/datadog" --php-bin=all
 
   echo "-----> Removing datadog-setup.php file"
   rm -f "$CACHE_DIR/datadog-setup.php"
