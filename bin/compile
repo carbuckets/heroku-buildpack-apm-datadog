@@ -15,7 +15,7 @@ cd $CACHE_DIR
 curl -LO https://github.com/DataDog/dd-trace-php/releases/latest/download/datadog-setup.php 
 
 if [ -s "$CACHE_DIR/datadog-setup.php" ]; then
-  echo "-----> Installing APM only"
+  echo "-----> Installing APM + ASM"
   php "$CACHE_DIR/datadog-setup.php" --install-dir="$BUILD_DIR/datadog" --php-bin=all --enable-appsec
 
   echo "-----> Removing datadog-setup.php file"
